@@ -19,6 +19,7 @@
 		E7E1FFF525A2D04D00E6880A /* CategoryImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E1FFF425A2D04D00E6880A /* CategoryImage.swift */; };
 		E7E1FFF725A2DCFF00E6880A /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E1FFF625A2DCFF00E6880A /* CheckBox.swift */; };
 		E7E1FFFA25A2EAB700E6880A /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E1FFF925A2EAB600E6880A /* ColorExtension.swift */; };
+		E7E1FFFC25A2EF9500E6880A /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E1FFFB25A2EF9500E6880A /* UserView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		E7E1FFF425A2D04D00E6880A /* CategoryImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryImage.swift; sourceTree = "<group>"; };
 		E7E1FFF625A2DCFF00E6880A /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		E7E1FFF925A2EAB600E6880A /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		E7E1FFFB25A2EF9500E6880A /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				E7E1FFC825A2CFB100E6880A /* ContentView.swift */,
 				E7E1FFF425A2D04D00E6880A /* CategoryImage.swift */,
 				E7E1FFF625A2DCFF00E6880A /* CheckBox.swift */,
+				E7E1FFFB25A2EF9500E6880A /* UserView.swift */,
 				E7E1FFCA25A2CFC000E6880A /* Assets.xcassets */,
 				E7E1FFCF25A2CFC000E6880A /* LaunchScreen.storyboard */,
 				E7E1FFD225A2CFC000E6880A /* Info.plist */,
@@ -290,6 +293,7 @@
 				E7E1FFC225A2CFB100E6880A /* AppDelegate.swift in Sources */,
 				E7E1FFC725A2CFB100E6880A /* SwiftUI_ToDoListApp.xcdatamodeld in Sources */,
 				E7E1FFF725A2DCFF00E6880A /* CheckBox.swift in Sources */,
+				E7E1FFFC25A2EF9500E6880A /* UserView.swift in Sources */,
 				E7E1FFC925A2CFB100E6880A /* ContentView.swift in Sources */,
 				E7E1FFF525A2D04D00E6880A /* CategoryImage.swift in Sources */,
 				E7E1FFFA25A2EAB700E6880A /* ColorExtension.swift in Sources */,
