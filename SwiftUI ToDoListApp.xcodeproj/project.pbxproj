@@ -16,6 +16,9 @@
 		E7E1FFD125A2CFC000E6880A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7E1FFCF25A2CFC000E6880A /* LaunchScreen.storyboard */; };
 		E7E1FFDC25A2CFC100E6880A /* SwiftUI_ToDoListAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E1FFDB25A2CFC100E6880A /* SwiftUI_ToDoListAppTests.swift */; };
 		E7E1FFE725A2CFC100E6880A /* SwiftUI_ToDoListAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E1FFE625A2CFC100E6880A /* SwiftUI_ToDoListAppUITests.swift */; };
+		E7E1FFF525A2D04D00E6880A /* CategoryImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E1FFF425A2D04D00E6880A /* CategoryImage.swift */; };
+		E7E1FFF725A2DCFF00E6880A /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E1FFF625A2DCFF00E6880A /* CheckBox.swift */; };
+		E7E1FFFA25A2EAB700E6880A /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E1FFF925A2EAB600E6880A /* ColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		E7E1FFE225A2CFC100E6880A /* SwiftUI ToDoListAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftUI ToDoListAppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7E1FFE625A2CFC100E6880A /* SwiftUI_ToDoListAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_ToDoListAppUITests.swift; sourceTree = "<group>"; };
 		E7E1FFE825A2CFC100E6880A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7E1FFF425A2D04D00E6880A /* CategoryImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryImage.swift; sourceTree = "<group>"; };
+		E7E1FFF625A2DCFF00E6880A /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		E7E1FFF925A2EAB600E6880A /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +107,12 @@
 		E7E1FFC025A2CFB100E6880A /* SwiftUI ToDoListApp */ = {
 			isa = PBXGroup;
 			children = (
+				E7E1FFF825A2EA8A00E6880A /* Extension */,
 				E7E1FFC125A2CFB100E6880A /* AppDelegate.swift */,
 				E7E1FFC325A2CFB100E6880A /* SceneDelegate.swift */,
 				E7E1FFC825A2CFB100E6880A /* ContentView.swift */,
+				E7E1FFF425A2D04D00E6880A /* CategoryImage.swift */,
+				E7E1FFF625A2DCFF00E6880A /* CheckBox.swift */,
 				E7E1FFCA25A2CFC000E6880A /* Assets.xcassets */,
 				E7E1FFCF25A2CFC000E6880A /* LaunchScreen.storyboard */,
 				E7E1FFD225A2CFC000E6880A /* Info.plist */,
@@ -137,6 +146,14 @@
 				E7E1FFE825A2CFC100E6880A /* Info.plist */,
 			);
 			path = "SwiftUI ToDoListAppUITests";
+			sourceTree = "<group>";
+		};
+		E7E1FFF825A2EA8A00E6880A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E7E1FFF925A2EAB600E6880A /* ColorExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,7 +289,10 @@
 			files = (
 				E7E1FFC225A2CFB100E6880A /* AppDelegate.swift in Sources */,
 				E7E1FFC725A2CFB100E6880A /* SwiftUI_ToDoListApp.xcdatamodeld in Sources */,
+				E7E1FFF725A2DCFF00E6880A /* CheckBox.swift in Sources */,
 				E7E1FFC925A2CFB100E6880A /* ContentView.swift in Sources */,
+				E7E1FFF525A2D04D00E6880A /* CategoryImage.swift in Sources */,
+				E7E1FFFA25A2EAB700E6880A /* ColorExtension.swift in Sources */,
 				E7E1FFC425A2CFB100E6880A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
