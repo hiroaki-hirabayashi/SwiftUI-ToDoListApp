@@ -8,7 +8,7 @@
 
 import SwiftUI
                 //型パラメータ  //型パラメータの条件
-struct CheckBox<Label>: View where Label: View {
+struct CheckBox<Label>: View where Label: View { 
     
     //MARK: - Properties
     @Binding var checked: Bool //Binding 他のViewと連携、共有出来るようにする
