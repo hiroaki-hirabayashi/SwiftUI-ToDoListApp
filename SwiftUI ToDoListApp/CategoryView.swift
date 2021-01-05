@@ -16,8 +16,10 @@ struct CategoryView: View {
     
     var body: some View {
         VStack {
-            VStack {
-                Image(systemName: category.toImage()) // extensionで作成したToDoEntity内のCategoryのimage
+            VStack (alignment:.leading){ //左揃え
+                // extensionで作成したToDoEntity内のCategoryのimage
+                Image(systemName: category.toImage())
+                    .font(.largeTitle) // アイコンの大きさ
                 Text(category.toString())
                 Text("・\(numberOfTasks)タスク")
             }
@@ -26,6 +28,11 @@ struct CategoryView: View {
             }
             Spacer()
         }
+        .padding() // 余白
+            .frame(maxWidth: .infinity, minHeight: 150) // 横幅最大, 高さの最小固定
+            .foregroundColor(.white) // 前景色
+            .background(category.toColor()) // 背景色
+            .cornerRadius(20) // 角丸に
     }
 }
 
@@ -36,7 +43,7 @@ struct CategoryView_Previews: PreviewProvider {
             CategoryView(category: .Priority2nd)
             CategoryView(category: .Priority3rd)
             CategoryView(category: .Priority4th)
-
+            
         }
     }
 }
