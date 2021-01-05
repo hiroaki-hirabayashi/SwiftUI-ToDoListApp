@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E7A4901D25A30BF500346240 /* ToDoEntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A4901C25A30BF500346240 /* ToDoEntityExtension.swift */; };
 		E7A4901F25A30EC200346240 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A4901E25A30EC200346240 /* CategoryView.swift */; };
+		E7A4902125A405A900346240 /* QuickNewTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A4902025A405A900346240 /* QuickNewTask.swift */; };
 		E7E1FFC225A2CFB100E6880A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E1FFC125A2CFB100E6880A /* AppDelegate.swift */; };
 		E7E1FFC425A2CFB100E6880A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E1FFC325A2CFB100E6880A /* SceneDelegate.swift */; };
 		E7E1FFC725A2CFB100E6880A /* SwiftUI_ToDoListApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7E1FFC525A2CFB100E6880A /* SwiftUI_ToDoListApp.xcdatamodeld */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		E7A4901C25A30BF500346240 /* ToDoEntityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoEntityExtension.swift; sourceTree = "<group>"; };
 		E7A4901E25A30EC200346240 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		E7A4902025A405A900346240 /* QuickNewTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickNewTask.swift; sourceTree = "<group>"; };
 		E7E1FFBE25A2CFB100E6880A /* SwiftUI ToDoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI ToDoListApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7E1FFC125A2CFB100E6880A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7E1FFC325A2CFB100E6880A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				E7E1FFF625A2DCFF00E6880A /* CheckBox.swift */,
 				E7E1FFFB25A2EF9500E6880A /* UserView.swift */,
 				E7A4901E25A30EC200346240 /* CategoryView.swift */,
+				E7A4902025A405A900346240 /* QuickNewTask.swift */,
 				E7E1FFCA25A2CFC000E6880A /* Assets.xcassets */,
 				E7E1FFCF25A2CFC000E6880A /* LaunchScreen.storyboard */,
 				E7E1FFD225A2CFC000E6880A /* Info.plist */,
@@ -297,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7E1FFC225A2CFB100E6880A /* AppDelegate.swift in Sources */,
+				E7A4902125A405A900346240 /* QuickNewTask.swift in Sources */,
 				E7E1FFC725A2CFB100E6880A /* SwiftUI_ToDoListApp.xcdatamodeld in Sources */,
 				E7E1FFF725A2DCFF00E6880A /* CheckBox.swift in Sources */,
 				E7E1FFFC25A2EF9500E6880A /* UserView.swift in Sources */,

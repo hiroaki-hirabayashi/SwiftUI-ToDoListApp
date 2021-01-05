@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "Catalina.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Catalina.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
