@@ -23,12 +23,27 @@ struct ToDoList: View {
     var category: ToDoEntity.Category
 
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            ForEach(toDoList) { toDo in
+                Text(toDo.task ?? "no title")
+            }
+        }
     }
 }
 
 struct ToDoList_Previews: PreviewProvider {
+    /*
+     DBのデータをリスト表示
+     CoreDateを操作するためのContextを設定
+     AppDelegateのインスタンス取得
+     Contextの指定にはenviroment Modifierで設定する
+     設定先はmanagedObjectContextと設定したcontext
+     */
+    static let context = (UIApplication.shared.delegate as! AppDelegate)
+        .persistentContainer.viewContext
+    
     static var previews: some View {
         ToDoList(category: .Priority1st)
+            .environment(\.managedObjectContext, context)
     }
 }

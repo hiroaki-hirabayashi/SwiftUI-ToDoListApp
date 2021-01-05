@@ -9,7 +9,30 @@
 import CoreData
 import SwiftUI
 
-extension ToDoEntity {
+extension ToDoEntity: Identifiable {
+    
+    // CoreDateの処理 テストデータ                 //CoreDateのDB操作の為のインスタンス
+    static func create(in managedObjectContext: NSManagedObjectContext,
+                       category: Category,
+                       task: String,
+                       time: Date? = Date()){
+        let toDo = self.init(context: managedObjectContext)
+        print(task)
+        toDo.time = time
+        toDo.category = category.rawValue
+        toDo.task = task
+        toDo.state = State.todo.rawValue
+        toDo.id = UUID().uuidString
+        
+        do {
+            try  managedObjectContext.save() // DBに保存
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
+
+    
     enum Category: Int16 {
         case Priority1st     // Important & Urgent (第1領域）
         case Priority2nd    // Important & Not Urgent (第2領域）
