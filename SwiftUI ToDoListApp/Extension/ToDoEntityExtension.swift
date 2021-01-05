@@ -11,44 +11,44 @@ import SwiftUI
 
 extension ToDoEntity {
     enum Category: Int16 {
-        case ImpUrg_1st     // Important & Urgent (第Ⅰ領域）
-        case ImpNUrg_2nd    // Important & Not Urgent (第Ⅱ領域）
-        case NImpUrg_3rd    // Not Important & Urgent（第Ⅲ領域）
-        case NImpNUrg_4th   // Not Important & Not Urgent（第Ⅳ領域）
+        case Priority1st     // Important & Urgent (第1領域）
+        case Priority2nd    // Important & Not Urgent (第2領域）
+        case Priority3rd    // Not Important & Urgent（第3領域）
+        case Priority4th   // Not Important & Not Urgent（第4領域）
         
         func toString() -> String { // タイトル文字
             switch self {
-                case .ImpUrg_1st:
+                case .Priority1st:
                     return "重要かつ緊急"
-                case .ImpNUrg_2nd:
+                case .Priority2nd:
                     return "重要だが緊急ではない"
-                case .NImpUrg_3rd:
+                case .Priority3rd:
                     return "重要でないが緊急"
-                case .NImpNUrg_4th:
+                case .Priority4th:
                     return "重要でも緊急でもない"
             }
         }
-        func image() -> String { // 画像
+        func toImage() -> String { // 画像
             switch self {
-                case .ImpUrg_1st:
+                case .Priority1st:
                     return "flame"
-                case .ImpNUrg_2nd:
+                case .Priority2nd:
                     return "tortoise.fill"
-                case .NImpUrg_3rd:
+                case .Priority3rd:
                     return "alarm"
-                case .NImpNUrg_4th:
+                case .Priority4th:
                     return "tv.music.note"
             }
         }
-        func color() -> Color { // 色
+        func toColor() -> Color { // 色
             switch self {
-                case .ImpUrg_1st:
+                case .Priority1st:
                     return .selfRed
-                case .ImpNUrg_2nd:
+                case .Priority2nd:
                     return .selfBlue
-                case .NImpUrg_3rd:
+                case .Priority3rd:
                     return .selfGreen
-                case .NImpNUrg_4th:
+                case .Priority4th:
                     return .selfYellow
             }
         }
