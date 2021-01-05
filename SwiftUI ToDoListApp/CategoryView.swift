@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+//ToDoを優先度でカテゴリー分けする
 struct CategoryView: View {
     
     //MARK: - Properties

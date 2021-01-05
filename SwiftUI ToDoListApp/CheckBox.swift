@@ -36,7 +36,7 @@ struct CheckBox_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             CheckBox(checked: .constant(false)) {
-                Text("牛乳")
+                Text("SwiftUI")
             } //Bindingを受け取る時は.constant()を使う
 //            CheckBox(checked: .constant(true))
         }

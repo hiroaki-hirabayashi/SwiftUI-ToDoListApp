@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+// ToDo入力
 struct QuickNewTask: View {
 
     //MARK: - Properties
@@ -25,7 +26,10 @@ struct QuickNewTask: View {
     
     var body: some View {
         HStack {
-            TextField("新しいToDoを追加", text: $newTask)
+            TextField("新しいToDoを追加", text: $newTask) {
+                self.addNewTask() //onCommit Enterを押した時にもaddNewTaskが呼ばれる
+            }.textFieldStyle(RoundedBorderTextFieldStyle())
+            
             Button(action: {
                 self.addNewTask()
             }) {

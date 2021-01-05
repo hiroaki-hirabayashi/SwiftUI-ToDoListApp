@@ -8,7 +8,8 @@
 
 import SwiftUI
 
-struct CategoryImage: View { // カテゴリー画像
+// カテゴリー画像
+struct CategoryImage: View {
     var body: some View {
         Image(systemName: "tortoise.fill")
             .resizable() //画像のサイズ変更可能

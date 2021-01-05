@@ -8,7 +8,8 @@
 
 import SwiftUI
 
-struct UserView: View { // ユーザー画面
+// ユーザー画面
+struct UserView: View {
     
     //MARK: - Properties
     let image: Image
