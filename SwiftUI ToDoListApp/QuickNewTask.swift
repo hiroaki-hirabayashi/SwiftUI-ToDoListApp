@@ -9,13 +9,42 @@
 import SwiftUI
 
 struct QuickNewTask: View {
+
+    //MARK: - Properties
+    let category: ToDoEntity.Category
+    @State var newTask = "" // 入力されたタスクを保持
+    
+    private func addNewTask() {
+        newTask = ""
+    }
+    
+    private func cancellTask() {
+        newTask = ""
+    }
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            TextField("新しいToDoを追加", text: $newTask)
+            Button(action: {
+                self.addNewTask()
+            }) {
+                Text("追加")
+            }
+            Button(action: {
+                self.cancellTask()
+            }) {
+                Text("キャンセル")
+                    .foregroundColor(.red)
+            }
+
+            
+        }
     }
 }
 
 struct QuickNewTask_Previews: PreviewProvider {
     static var previews: some View {
-        QuickNewTask()
+        QuickNewTask(category: .Priority1st)
     }
 }
