@@ -20,13 +20,17 @@ struct ToDoList: View {
         animation: .default)
     
     var toDoList: FetchedResults<ToDoEntity> // テーブルの全データが入る
-    var category: ToDoEntity.Category
+    var toDoCategory: ToDoEntity.Category
 
     var body: some View {
-        List {
-            ForEach(toDoList) { toDo in
-                Text(toDo.task ?? "no title")
+        VStack {
+            List {
+                ForEach(toDoList) { toDo in
+                    Text(toDo.task ?? "no title")
+                }
             }
+            QuickNewTask(category: toDoCategory)
+                .padding()
         }
     }
 }
@@ -39,11 +43,35 @@ struct ToDoList_Previews: PreviewProvider {
      Contextの指定にはenviroment Modifierで設定する
      設定先はmanagedObjectContextと設定したcontext
      */
-    static let context = (UIApplication.shared.delegate as! AppDelegate)
-        .persistentContainer.viewContext
+    static let container = (UIApplication.shared.delegate as! AppDelegate)
+        .persistentContainer
+    static let context = container.viewContext
     
     static var previews: some View {
-        ToDoList(category: .Priority1st)
+//        ToDoList(category: .Priority1st)
+//            .environment(\.managedObjectContext, context)
+        
+        // テストデータの全削除
+        let request = NSBatchDeleteRequest(
+            fetchRequest: NSFetchRequest(entityName: "ToDoEntity"))
+        try! container.persistentStoreCoordinator.execute(request,
+                                                          with: context)
+        
+        // データを追加 ToDoEntityに追加したcreateメソッド
+        ToDoEntity.create(in: context,
+                          category: .Priority1st, task: "炎上プロジェクト")
+        ToDoEntity.create(in: context,
+                          category: .Priority2nd, task: "自己啓発")
+        ToDoEntity.create(in: context,
+                          category: .Priority3rd, task: "意味のない会議")
+        ToDoEntity.create(in: context,
+                          category: .Priority4th, task: "暇つぶし")
+        
+        // 複数行ある場合はreturnを定義しなければならない？
+        return ToDoList(toDoCategory: .Priority1st)
             .environment(\.managedObjectContext, context)
+        
     }
+
+
 }
