@@ -19,14 +19,17 @@ struct ToDoList: View {
                                            ascending: true)],
         animation: .default)
     
-    var toDoList: FetchedResults<ToDoEntity> // テーブルの全データが入る
+    var toDoList: FetchedResults<ToDoEntity> // DBテーブルの全データが入る
     var toDoCategory: ToDoEntity.Category
 
     var body: some View {
         VStack {
             List {
-                ForEach(toDoList) { toDo in
-                    Text(toDo.task ?? "no title")
+                ForEach(toDoList) { toDoList in
+                    // ToDoEntityのcategory
+                    if toDoList.category == self.toDoCategory.rawValue {
+                        ToDoDetailRow(observedToDo: toDoList, hideIcon: true) // ToDoDetileRowを組込む
+                    }
                 }
             }
             QuickNewTask(category: toDoCategory)

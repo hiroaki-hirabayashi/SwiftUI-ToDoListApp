@@ -14,7 +14,7 @@ struct ToDoDetailRow: View {
      @State 
     */
     @ObservedObject var observedToDo: ToDoEntity
-    var hideIcon = false
+    var hideIcon = false 
     
     var body: some View {
         HStack {
