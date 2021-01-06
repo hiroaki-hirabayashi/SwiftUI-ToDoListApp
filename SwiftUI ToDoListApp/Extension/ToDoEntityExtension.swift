@@ -21,7 +21,7 @@ extension ToDoEntity: Identifiable {
         toDo.time = time
         toDo.category = category.rawValue
         toDo.task = task
-        toDo.state = State.todo.rawValue
+        toDo.state = State.toDo.rawValue
         toDo.id = UUID().uuidString
         
         do {
@@ -78,7 +78,7 @@ extension ToDoEntity: Identifiable {
     }
     
     enum State: Int16 {
-        case todo
+        case toDo
         case done
     }
 }

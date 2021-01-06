@@ -7,6 +7,9 @@
 //
 
 import SwiftUI
+
+// ToDoDetailRowで表示するためのチェックボックス
+
                 //型パラメータ  //型パラメータの条件
 struct CheckBox<Label>: View where Label: View { 
     
@@ -15,7 +18,7 @@ struct CheckBox<Label>: View where Label: View {
     private var label: () -> Label //クロージャー型
     
     public init(checked: Binding<Bool>,
-                @ViewBuilder label: @escaping () -> Label) { //@ViewBuilder Viewを開業して並べて列挙して複数のViewを渡す構文が使える
+                @ViewBuilder label: @escaping () -> Label) { //@ViewBuilder Viewを改行、並べて列挙して複数のViewを渡す構文が使える
         self._checked = checked
         self.label = label
     }

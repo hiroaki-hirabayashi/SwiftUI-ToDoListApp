@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-// カテゴリー画像
+// ToDoDetailRowに表示するためのアイコン画像
 struct CategoryImage: View {
     
     var category: ToDoEntity.Category
