@@ -27,8 +27,14 @@ struct ToDoDetailRow: View {
                 // CheckBoxからの値（$0）を受け取って0か1に設定する
                 self.observedToDo.state = $0 ? ToDoEntity.State.done.rawValue : ToDoEntity.State.toDo.rawValue
             })) {
-                Text(self.observedToDo.task ?? "no title")
+                // stateの状態が完了であればstrikethrough（取り消し線）を表示し、未完了であればそのまま表示
+                if self.observedToDo.state == ToDoEntity.State.done.rawValue {
+                    Text(self.observedToDo.task ?? "no title").strikethrough()
+                } else {
+                    Text(self.observedToDo.task ?? "no title")
+                }
             }
+            .foregroundColor(self.observedToDo.state == ToDoEntity.State.done.rawValue ? .secondary : .primary) // stateが完了であれば文字色をグレー 未完了なら黒
         }
     }
 }
