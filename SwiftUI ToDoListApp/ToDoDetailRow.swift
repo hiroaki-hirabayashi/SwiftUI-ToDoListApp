@@ -36,6 +36,19 @@ struct ToDoDetailRow: View {
             }
             .foregroundColor(self.observedToDo.state == ToDoEntity.State.done.rawValue ? .secondary : .primary) // stateが完了であれば文字色をグレー 未完了なら黒
         }
+        .gesture(DragGesture().onChanged({ value in // ジェスチャー ドラッグした場合、座標情報がvalueに入る
+            if value.predictedEndTranslation.width > 200 { // 指の位置が横方向（左）に200以上移動したら処理を始める
+                // observedToDo.stateの状態が完了でなければ完了にする
+                if self.observedToDo.state != ToDoEntity.State.done.rawValue {
+                    self.observedToDo.state = ToDoEntity.State.done.rawValue
+                }
+            } else if value.predictedEndTranslation.width < -200 {
+                // observedToDo.stateの状態が未完了でなければ未完了にする
+                if self.observedToDo.state != ToDoEntity.State.toDo.rawValue {
+                    self.observedToDo.state = ToDoEntity.State.toDo.rawValue
+                }
+            }
+        }))
     }
 }
 
