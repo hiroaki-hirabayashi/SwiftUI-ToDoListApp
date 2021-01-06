@@ -14,8 +14,10 @@ struct QuickNewTask: View {
     //MARK: - Properties
     let category: ToDoEntity.Category
     @State var newTask = "" // 入力されたタスクを保持
+    @Environment(\.managedObjectContext) var ViewContext // DB操作のためのContext
     
     private func addNewTask() {
+        ToDoEntity.create(in: self.ViewContext, category: self.category, task: self.newTask)
         newTask = ""
     }
     
@@ -48,7 +50,11 @@ struct QuickNewTask: View {
 }
 
 struct QuickNewTask_Previews: PreviewProvider {
+    static var context = (UIApplication.shared.delegate as! AppDelegate)
+        .persistentContainer.viewContext
+    
     static var previews: some View {
         QuickNewTask(category: .Priority1st)
+            .environment(\.managedObjectContext, context) // DB操作オブジェクト
     }
 }
