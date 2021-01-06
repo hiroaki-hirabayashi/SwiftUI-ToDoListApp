@@ -14,11 +14,15 @@ struct ToDoDetailRow: View {
      @State 
     */
     @ObservedObject var observedToDo: ToDoEntity
+    var hideIcon = false
     
     var body: some View {
         HStack {
-            //DBからintgerを取得してrawValueでenumに変換
-            CategoryImage(ToDoEntity.Category(rawValue: observedToDo.category))
+            if !hideIcon {
+                //DBからintgerを取得してrawValueでenumに変換
+                CategoryImage(ToDoEntity.Category(rawValue: observedToDo.category))
+            }
+            
             // ToDoEntityのstate（状態）がintなのでBoolに変換する
             CheckBox(checked: Binding(get: {
                 // stateがdoneであればtrue
@@ -59,13 +63,39 @@ struct TodoDetailRow_Previews: PreviewProvider {
         // DB操作のためのcontext取得
         let context = (UIApplication.shared.delegate as! AppDelegate)
             .persistentContainer.viewContext
-        // contextをToDoEntityのイニシャライザに渡してインスタンス化
-        let newToDo = ToDoEntity(context: context)
-        newToDo.task = "将来への人間関係づくり"
-        newToDo.state = ToDoEntity.State.toDo.rawValue
-        newToDo.category = 0
         
-        return ToDoDetailRow(observedToDo: newToDo)
+        // contextをToDoEntityのイニシャライザに渡してインスタンス化
+        let newToDo0 = ToDoEntity(context: context)
+        newToDo0.task = "将来への人間関係づくり"
+        newToDo0.state = ToDoEntity.State.toDo.rawValue
+        newToDo0.category = 0
+        
+        let newToDo1 = ToDoEntity(context: context)
+        newToDo1.task = "将来への人間関係づくり"
+        newToDo1.state = ToDoEntity.State.toDo.rawValue
+        newToDo1.category = 1
+
+        let newToDo2 = ToDoEntity(context: context)
+        newToDo2.task = "将来への人間関係づくり"
+        newToDo2.state = ToDoEntity.State.toDo.rawValue
+        newToDo2.category = 2
+
+        let newToDo3 = ToDoEntity(context: context)
+        newToDo3.task = "将来への人間関係づくり"
+        newToDo3.state = ToDoEntity.State.toDo.rawValue
+        newToDo3.category = 3
+
+        
+        
+        return VStack(alignment: .leading) {
+                VStack {
+                    ToDoDetailRow(observedToDo: newToDo0)
+                    ToDoDetailRow(observedToDo: newToDo0, hideIcon: true)
+                    ToDoDetailRow(observedToDo: newToDo1)
+                    ToDoDetailRow(observedToDo: newToDo2)
+                    ToDoDetailRow(observedToDo: newToDo3)
+                }.environment(\.managedObjectContext, context)
+        }
     }
 }
 
