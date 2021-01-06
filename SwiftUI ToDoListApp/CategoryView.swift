@@ -14,6 +14,8 @@ struct CategoryView: View {
     //MARK: - Properties
     var category: ToDoEntity.Category // extensionで作成したToDoEntity内のCategory
     @State var numberOfTasks = 0 //カテゴリー内のタスク数表示
+    @State var showList = false
+    @Environment(\.managedObjectContext) var viewContext
     
     var body: some View {
         VStack {
@@ -21,6 +23,13 @@ struct CategoryView: View {
                 // extensionで作成したToDoEntity内のCategoryのimage
                 Image(systemName: category.toImage())
                     .font(.largeTitle) // アイコンの大きさ
+                    .sheet(isPresented: $showList) {
+                        /* isPresentedがtrueの時、シート表示 $showListはonTapGestureで制御
+                         sheetModifire でシートの中身（content）を指定する
+                         */
+                        ToDoList(toDoCategory: self.category)
+                            .environment(\.managedObjectContext, self.viewContext) // これを記入しないとDBが動作しない。ToDoList_Previewsに詳細有り
+                }
                 Text(category.toString())
                 Text("・\(numberOfTasks)タスク")
             }
@@ -29,22 +38,27 @@ struct CategoryView: View {
             }
             Spacer()
         }
-        .padding() // 余白
+            .padding() // 余白
             .frame(maxWidth: .infinity, minHeight: 150) // 横幅最大, 高さの最小固定
             .foregroundColor(.white) // 前景色
             .background(category.toColor()) // 背景色
             .cornerRadius(20) // 角丸に
+            .onTapGesture {
+                self.showList = true
+        }
     }
 }
 
 struct CategoryView_Previews: PreviewProvider {
+    static let context = (UIApplication.shared.delegate as! AppDelegate)
+        .persistentContainer.viewContext
+    
     static var previews: some View {
         VStack {
             CategoryView(category: .Priority1st)
             CategoryView(category: .Priority2nd)
             CategoryView(category: .Priority3rd)
             CategoryView(category: .Priority4th)
-            
-        }
+        }.environment(\.managedObjectContext, context)
     }
 }

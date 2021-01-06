@@ -41,7 +41,7 @@ struct ToDoList: View {
 struct ToDoList_Previews: PreviewProvider {
     /*
      DBのデータをリスト表示
-     CoreDateを操作するためのContextを設定
+     CoreDateを操作するためのContextを設定する。しないとDBが動作しない
      AppDelegateのインスタンス取得
      Contextの指定にはenviroment Modifierで設定する
      設定先はmanagedObjectContextと設定したcontext
