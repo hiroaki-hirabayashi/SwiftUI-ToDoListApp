@@ -12,18 +12,32 @@ struct NewTask: View {
 
     //MARK: - Properties
     @State var newTask = ""
-    @State var selectDateTime = Date()
+    @State var selectDateTime: Date? = Date() //nilを持ちたい（optional型）にしたいのでDate?としてます
     
     var body: some View {
         NavigationView {
             Form {
+        
                 Section(header: Text("ToDo")) {
                     TextField("ToDo(やる事)追加", text: $newTask)
                 }
                 
-                Section(header: Toggle(isOn: .constant(true), label: { Text("日時") } )) {
-                    // selectionには渡すBinding
-                    DatePicker(selection: $selectDateTime, label: { Text("日時") })
+                /*
+                 Binding(isNotNil: $selectDateTime, defaultValue: Date())
+                 selectDateTimeの値がnilかそうでないかをToggleと連動させる（ToggleがONで!=nil OFFでnilが$selectDateTimeに入る）
+                 */
+                Section(header: Toggle(isOn: Binding(isNotNil: $selectDateTime, defaultValue: Date()), label: { Text("日時") } )) {
+                    if selectDateTime != nil { // selectDateTimeがnilでなかったら時間設定表示 nilなら表示しない
+                        /*
+                         selectionには渡すBindingを設定
+                         $selectDateTimeだとoptionalのBindingを渡してしまうのでエラーになる（Date型のBindingを渡さなければならない）
+                         Binding($selectDateTime, Date())としてoptionalをBindingする
+                         */
+                        DatePicker(selection: Binding($selectDateTime, Date()), label: { Text("日時") })
+                    } else {
+                        Text("未設定").foregroundColor(.secondary)
+                    }
+                    
                 }
                 
                 Section(header: Text("取り消し")) {

@@ -8,14 +8,36 @@
 
 import SwiftUI
 
-struct BindingExtention: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+extension Binding {
+    
+    /*
+     DateのToggleのON OFFで入力未入力を切り替えたい
+     オプショナルのDate型をBoolに変換
+     任意のBindingを取得しnilかそうでないかによってtrue,falseを返す
+     **/
+    init<T>(isNotNil source: Binding<T?>, defaultValue: T) where Value == Bool {
+        // オプショナルのDate型が入る nilでないならtrue nilならfalse
+        self.init(get: { source.wrappedValue != nil },
+                  set: { source.wrappedValue = $0 ? defaultValue : nil })
+        // setにToggle結果が入る trueならdefaultValue、falseならnilがwrappedValueに格納される
     }
-}
-
-struct BindingExtention_Previews: PreviewProvider {
-    static var previews: some View {
-        BindingExtention()
+    
+    // DatePickerに渡す$selectDateTimeがoptional型
+    init(_ source: Binding<Value?>, _ defaultValue: Value) {
+        
+        self.init(get:{
+            /*
+             wrappedValueはoptional型なのでnilになる時がある
+             wrappedValueがnilならdefaultValueを格納してnilじゃない状態にする
+             */
+            if source.wrappedValue == nil {
+                source.wrappedValue = defaultValue
+            }
+            return source.wrappedValue ?? defaultValue
+            
+        },set:{
+            source.wrappedValue = $0
+        })
     }
+    
 }
