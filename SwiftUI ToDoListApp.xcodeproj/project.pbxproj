@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E72D250B25A69F9D0035F481 /* NewTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72D250A25A69F9D0035F481 /* NewTask.swift */; };
+		E72D250D25A6AC190035F481 /* BindingExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72D250C25A6AC190035F481 /* BindingExtention.swift */; };
 		E78ABB8E25A44324002327BA /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78ABB8D25A44324002327BA /* ToDoList.swift */; };
 		E78ABB9025A4575B002327BA /* ToDoDetailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78ABB8F25A4575B002327BA /* ToDoDetailRow.swift */; };
 		E7A4901D25A30BF500346240 /* ToDoEntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A4901C25A30BF500346240 /* ToDoEntityExtension.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		E72D250A25A69F9D0035F481 /* NewTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTask.swift; sourceTree = "<group>"; };
+		E72D250C25A6AC190035F481 /* BindingExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingExtention.swift; sourceTree = "<group>"; };
 		E78ABB8D25A44324002327BA /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
 		E78ABB8F25A4575B002327BA /* ToDoDetailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoDetailRow.swift; sourceTree = "<group>"; };
 		E7A4901C25A30BF500346240 /* ToDoEntityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoEntityExtension.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			children = (
 				E7E1FFF925A2EAB600E6880A /* ColorExtension.swift */,
 				E7A4901C25A30BF500346240 /* ToDoEntityExtension.swift */,
+				E72D250C25A6AC190035F481 /* BindingExtention.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				E7E1FFF525A2D04D00E6880A /* CategoryImage.swift in Sources */,
 				E7E1FFFA25A2EAB700E6880A /* ColorExtension.swift in Sources */,
 				E7E1FFC425A2CFB100E6880A /* SceneDelegate.swift in Sources */,
+				E72D250D25A6AC190035F481 /* BindingExtention.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
