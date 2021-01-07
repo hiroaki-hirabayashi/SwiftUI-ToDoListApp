@@ -16,6 +16,21 @@ struct NewTask: View {
     @State var category = ToDoEntity.Category.Priority1st.rawValue // カテゴリーピッカーの内容を保持
     var categoryArray: [ToDoEntity.Category]
         = [.Priority1st, .Priority2nd, .Priority3rd, .Priority4th]
+
+    @Environment(\.managedObjectContext) var viewContext
+    
+    //MARK: - function
+    
+    //データ保存のfunction
+    private func save() {
+        do {
+            try self.viewContext.save()
+        } catch {
+            let error = error as NSError
+            fatalError("エラー\(error), \(error.userInfo)")
+        }
+    }
+
     
     var body: some View {
         NavigationView {
@@ -64,14 +79,24 @@ struct NewTask: View {
                     }
                 }
             }.navigationBarTitle("ToDo追加")
+                .navigationBarItems(trailing: Button(action: {
+                    ToDoEntity.create(in: self.viewContext, category: ToDoEntity.Category(rawValue: self.category) ?? .Priority1st, task: self.newTask, time: self.selectDateTime)
+                    self.save()
+                }) {
+                    Text("保存")
+                })
         }
     }
 }
 
 struct NewTask_Previews: PreviewProvider {
+    static var context = (UIApplication.shared.delegate as! AppDelegate)
+        .persistentContainer.viewContext // DB操作対応
     static var previews: some View {
         NewTask()
+            .environment(\.managedObjectContext, context)
             .environment(\.locale, Locale(identifier: "ja_JP")) // NewTask_Previews上で日本語化
+        
 
     }
 }
