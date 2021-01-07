@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E72D250B25A69F9D0035F481 /* NewTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72D250A25A69F9D0035F481 /* NewTask.swift */; };
 		E78ABB8E25A44324002327BA /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78ABB8D25A44324002327BA /* ToDoList.swift */; };
 		E78ABB9025A4575B002327BA /* ToDoDetailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78ABB8F25A4575B002327BA /* ToDoDetailRow.swift */; };
 		E7A4901D25A30BF500346240 /* ToDoEntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A4901C25A30BF500346240 /* ToDoEntityExtension.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E72D250A25A69F9D0035F481 /* NewTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTask.swift; sourceTree = "<group>"; };
 		E78ABB8D25A44324002327BA /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
 		E78ABB8F25A4575B002327BA /* ToDoDetailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoDetailRow.swift; sourceTree = "<group>"; };
 		E7A4901C25A30BF500346240 /* ToDoEntityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoEntityExtension.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				E7A4902025A405A900346240 /* QuickNewTask.swift */,
 				E78ABB8D25A44324002327BA /* ToDoList.swift */,
 				E78ABB8F25A4575B002327BA /* ToDoDetailRow.swift */,
+				E72D250A25A69F9D0035F481 /* NewTask.swift */,
 				E7E1FFCA25A2CFC000E6880A /* Assets.xcassets */,
 				E7E1FFCF25A2CFC000E6880A /* LaunchScreen.storyboard */,
 				E7E1FFD225A2CFC000E6880A /* Info.plist */,
@@ -314,6 +317,7 @@
 				E7A4901F25A30EC200346240 /* CategoryView.swift in Sources */,
 				E7E1FFC925A2CFB100E6880A /* ContentView.swift in Sources */,
 				E78ABB8E25A44324002327BA /* ToDoList.swift in Sources */,
+				E72D250B25A69F9D0035F481 /* NewTask.swift in Sources */,
 				E7A4901D25A30BF500346240 /* ToDoEntityExtension.swift in Sources */,
 				E7E1FFF525A2D04D00E6880A /* CategoryImage.swift in Sources */,
 				E7E1FFFA25A2EAB700E6880A /* ColorExtension.swift in Sources */,
