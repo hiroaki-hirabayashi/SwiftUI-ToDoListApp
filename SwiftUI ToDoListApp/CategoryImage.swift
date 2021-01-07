@@ -11,22 +11,22 @@ import SwiftUI
 // ToDoDetailRowに表示するためのアイコン画像
 struct CategoryImage: View {
     
-    var category: ToDoEntity.Category
+    var categoryImage: ToDoEntity.Category
     
     init(_ category: ToDoEntity.Category?) {
-        self.category = category ?? .Priority1st
+        self.categoryImage = category ?? .Priority1st
     }
     
     var body: some View {
 //        Image(systemName: "tortoise.fill")
-        Image(systemName: category.toImage())
+        Image(systemName: categoryImage.iconImage())
             .resizable() //画像のサイズ変更可能
             .scaledToFit() //縦横比の固定
             .foregroundColor(.white) //画像の色
             .padding(2.0) // アイコンの余白
             .frame(width: 30, height: 30) //画像サイズ
 //            .background(Color(.systemBlue)) //背景色
-            .background(category.toColor()) //背景色
+            .background(categoryImage.iconColor()) //背景色
             .cornerRadius(6.0) //アイコンの角を丸く
         
         

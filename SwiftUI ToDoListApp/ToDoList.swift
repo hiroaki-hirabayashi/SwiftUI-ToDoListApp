@@ -62,13 +62,13 @@ struct ToDoList_Previews: PreviewProvider {
         
         // データを追加 ToDoEntityに追加したcreateメソッド
         ToDoEntity.create(in: context,
-                          category: .Priority1st, task: "炎上プロジェクト")
+                          category: .Priority1st, task: "優先度")
         ToDoEntity.create(in: context,
                           category: .Priority2nd, task: "自己啓発")
         ToDoEntity.create(in: context,
-                          category: .Priority3rd, task: "意味のない会議")
+                          category: .Priority3rd, task: "会議")
         ToDoEntity.create(in: context,
-                          category: .Priority4th, task: "暇つぶし")
+                          category: .Priority4th, task: "PC")
         
         // 複数行ある場合はreturnを定義しなければならない？
         return ToDoList(toDoCategory: .Priority1st)

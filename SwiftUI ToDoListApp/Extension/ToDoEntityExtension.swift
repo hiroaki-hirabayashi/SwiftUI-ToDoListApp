@@ -39,19 +39,19 @@ extension ToDoEntity: Identifiable {
         case Priority3rd    // Not Important & Urgent（第3領域）
         case Priority4th   // Not Important & Not Urgent（第4領域）
         
-        func toString() -> String { // タイトル文字
+        func iconString() -> String { // タイトル文字
             switch self {
                 case .Priority1st:
-                    return "重要かつ緊急"
+                    return "優先度1（重要かつ緊急）"
                 case .Priority2nd:
-                    return "重要だが緊急ではない"
+                    return "優先度2（重要だが緊急ではない）"
                 case .Priority3rd:
-                    return "重要でないが緊急"
+                    return "優先度3（重要でないが緊急）"
                 case .Priority4th:
-                    return "重要でも緊急でもない"
+                    return "優先度4（重要でも緊急でもない）"
             }
         }
-        func toImage() -> String { // 画像
+        func iconImage() -> String { // 画像
             switch self {
                 case .Priority1st:
                     return "flame"
@@ -63,7 +63,7 @@ extension ToDoEntity: Identifiable {
                     return "tv.music.note"
             }
         }
-        func toColor() -> Color { // 色
+        func iconColor() -> Color { // 色
             switch self {
                 case .Priority1st:
                     return .selfRed
@@ -80,5 +80,11 @@ extension ToDoEntity: Identifiable {
     enum State: Int16 {
         case toDo
         case done
+    }
+}
+
+struct ToDoEntityExtension_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }

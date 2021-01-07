@@ -11,18 +11,22 @@ import SwiftUI
 struct NewTask: View {
 
     //MARK: - Properties
-    @State var newTask = ""
-    @State var selectDateTime: Date? = Date() //nilを持ちたい（optional型）にしたいのでDate?としてます
+    @State var newTask = "" // ToDo内容を保持
+    @State var selectDateTime: Date? = Date()  //日時 nilを持ちたい（optional型）にしたいのでDate?としてます
+    @State var category = ToDoEntity.Category.Priority1st.rawValue // カテゴリーピッカーの内容を保持
+    var categoryArray: [ToDoEntity.Category]
+        = [.Priority1st, .Priority2nd, .Priority3rd, .Priority4th]
     
     var body: some View {
         NavigationView {
             Form {
-        
+                // ToDo入力セクション
                 Section(header: Text("ToDo")) {
                     TextField("ToDo(やる事)追加", text: $newTask)
                 }
                 
                 /*
+                 日時入力セクション
                  Binding(isNotNil: $selectDateTime, defaultValue: Date())
                  selectDateTimeの値がnilかそうでないかをToggleと連動させる（ToggleがONで!=nil OFFでnilが$selectDateTimeに入る）
                  */
@@ -40,6 +44,17 @@ struct NewTask: View {
                     
                 }
                 
+                // カテゴリーピッカー $categoryにtagの値が入る
+                Picker(selection: $category, label: Text("カテゴリー")) {
+                    ForEach(categoryArray, id: \.self) { category in
+                        HStack {
+                            CategoryImage(category)
+                            Text(category.iconString())
+                        }.tag(category.rawValue)
+                    }
+                }
+                
+                //キャンセルセクション
                 Section(header: Text("取り消し")) {
                     Button(action: {}) {
                         HStack(alignment: .center) {

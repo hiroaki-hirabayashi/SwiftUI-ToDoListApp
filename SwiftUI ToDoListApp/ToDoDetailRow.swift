@@ -66,22 +66,22 @@ struct TodoDetailRow_Previews: PreviewProvider {
         
         // contextをToDoEntityのイニシャライザに渡してインスタンス化
         let newToDo0 = ToDoEntity(context: context)
-        newToDo0.task = "将来への人間関係づくり"
+        newToDo0.task = "優先度1"
         newToDo0.state = ToDoEntity.State.toDo.rawValue
         newToDo0.category = 0
         
         let newToDo1 = ToDoEntity(context: context)
-        newToDo1.task = "将来への人間関係づくり"
+        newToDo1.task = "優先度2"
         newToDo1.state = ToDoEntity.State.toDo.rawValue
         newToDo1.category = 1
 
         let newToDo2 = ToDoEntity(context: context)
-        newToDo2.task = "将来への人間関係づくり"
+        newToDo2.task = "優先度3"
         newToDo2.state = ToDoEntity.State.toDo.rawValue
         newToDo2.category = 2
 
         let newToDo3 = ToDoEntity(context: context)
-        newToDo3.task = "将来への人間関係づくり"
+        newToDo3.task = "優先度4"
         newToDo3.state = ToDoEntity.State.toDo.rawValue
         newToDo3.category = 3
 

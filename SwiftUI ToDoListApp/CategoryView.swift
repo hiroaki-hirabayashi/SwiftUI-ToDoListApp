@@ -21,7 +21,7 @@ struct CategoryView: View {
         VStack {
             VStack (alignment:.leading){ //左揃え
                 // extensionで作成したToDoEntity内のCategoryのimage
-                Image(systemName: category.toImage())
+                Image(systemName: category.iconImage())
                     .font(.largeTitle) // アイコンの大きさ
                     .sheet(isPresented: $showList) {
                         /* isPresentedがtrueの時、シート表示 $showListはonTapGestureで制御
@@ -30,7 +30,7 @@ struct CategoryView: View {
                         ToDoList(toDoCategory: self.category)
                             .environment(\.managedObjectContext, self.viewContext) // これを記入しないとDBが動作しない。ToDoList_Previewsに詳細有り
                 }
-                Text(category.toString())
+                Text(category.iconString())
                 Text("・\(numberOfTasks)タスク")
             }
             Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
@@ -41,7 +41,7 @@ struct CategoryView: View {
             .padding() // 余白
             .frame(maxWidth: .infinity, minHeight: 150) // 横幅最大, 高さの最小固定
             .foregroundColor(.white) // 前景色
-            .background(category.toColor()) // 背景色
+            .background(category.iconColor()) // 背景色
             .cornerRadius(20) // 角丸に
             .onTapGesture {
                 self.showList = true
