@@ -31,6 +31,8 @@ struct ContentView: View {
                     CategoryView(categoryViewCategory: .Priority4th)
                 }
             }.padding() // 余白
+            
+            TodayToDo()
         }.background(Color.gray) // 背景色
             .edgesIgnoringSafeArea(.bottom) // SafeAreaを超える
     }
