@@ -23,17 +23,21 @@ struct ToDoList: View {
     var toDoCategory: ToDoEntity.Category
 
     var body: some View {
-        VStack {
-            List {
-                ForEach(toDoList) { toDoList in
-                    // ToDoEntityのcategory
-                    if toDoList.category == self.toDoCategory.rawValue {
-                        ToDoDetailRow(observedToDo: toDoList, hideIcon: true) // ToDoDetileRowを組込む
+        NavigationView {
+            VStack {
+                List {
+                    ForEach(toDoList) { toDoList in
+                        // ToDoEntityのcategory
+                        if toDoList.category == self.toDoCategory.rawValue {
+                            NavigationLink(destination: EditToDo(editToDo: toDoList)) {
+                                ToDoDetailRow(observedToDo: toDoList, hideIcon: true)
+                            } // ToDoDetileRowを組込む
+                        }
                     }
                 }
+                QuickNewTask(category: toDoCategory)
+                    .padding()
             }
-            QuickNewTask(category: toDoCategory)
-                .padding()
         }
     }
 }

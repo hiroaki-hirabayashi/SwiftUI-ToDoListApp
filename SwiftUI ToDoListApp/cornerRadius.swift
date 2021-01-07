@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct cornerRadius: Shape {
+struct CornerRadius: Shape {
     
     var topRight: CGFloat = 0.0
     var topLelt: CGFloat = 0.0
@@ -47,6 +47,6 @@ struct cornerRadius: Shape {
 
 struct cornerRadius_Previews: PreviewProvider {
     static var previews: some View {
-        cornerRadius(topRight: 30, topLelt: 30, bottomRight: 30, bottomLeft: 30).stroke().padding()
+        CornerRadius(topRight: 30, topLelt: 30, bottomRight: 30, bottomLeft: 30).stroke().padding()
     }
 }

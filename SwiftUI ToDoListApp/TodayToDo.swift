@@ -26,6 +26,7 @@ struct TodayToDo: View {
                 ToDoDetailRow(observedToDo: toDo)
             }
         }.background(Color(UIColor.systemBackground))
+        .clipShape(CornerRadius(topRight: 40, topLelt: 40, bottomRight: 0, bottomLeft: 0))
         
     }
 }

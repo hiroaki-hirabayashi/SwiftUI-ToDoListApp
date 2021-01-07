@@ -14,7 +14,7 @@
 		E79C7D0225A7620800E55AE5 /* EditToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C7D0125A7620800E55AE5 /* EditToDo.swift */; };
 		E79C7D0425A76F3800E55AE5 /* TodayToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C7D0325A76F3800E55AE5 /* TodayToDo.swift */; };
 		E79C7D0625A7711E00E55AE5 /* DateExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C7D0525A7711E00E55AE5 /* DateExtention.swift */; };
-		E79C7D0825A7754500E55AE5 /* cornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C7D0725A7754500E55AE5 /* cornerRadius.swift */; };
+		E79C7D0825A7754500E55AE5 /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C7D0725A7754500E55AE5 /* CornerRadius.swift */; };
 		E7A4901D25A30BF500346240 /* ToDoEntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A4901C25A30BF500346240 /* ToDoEntityExtension.swift */; };
 		E7A4901F25A30EC200346240 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A4901E25A30EC200346240 /* CategoryView.swift */; };
 		E7A4902125A405A900346240 /* QuickNewTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A4902025A405A900346240 /* QuickNewTask.swift */; };
@@ -58,7 +58,7 @@
 		E79C7D0125A7620800E55AE5 /* EditToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditToDo.swift; sourceTree = "<group>"; };
 		E79C7D0325A76F3800E55AE5 /* TodayToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayToDo.swift; sourceTree = "<group>"; };
 		E79C7D0525A7711E00E55AE5 /* DateExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtention.swift; sourceTree = "<group>"; };
-		E79C7D0725A7754500E55AE5 /* cornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cornerRadius.swift; sourceTree = "<group>"; };
+		E79C7D0725A7754500E55AE5 /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
 		E7A4901C25A30BF500346240 /* ToDoEntityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoEntityExtension.swift; sourceTree = "<group>"; };
 		E7A4901E25A30EC200346240 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		E7A4902025A405A900346240 /* QuickNewTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickNewTask.swift; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 				E7A4902025A405A900346240 /* QuickNewTask.swift */,
 				E79C7D0125A7620800E55AE5 /* EditToDo.swift */,
 				E79C7D0325A76F3800E55AE5 /* TodayToDo.swift */,
-				E79C7D0725A7754500E55AE5 /* cornerRadius.swift */,
+				E79C7D0725A7754500E55AE5 /* CornerRadius.swift */,
 				E7E1FFC125A2CFB100E6880A /* AppDelegate.swift */,
 				E7E1FFC325A2CFB100E6880A /* SceneDelegate.swift */,
 				E7E1FFCA25A2CFC000E6880A /* Assets.xcassets */,
@@ -339,7 +339,7 @@
 				E7A4901D25A30BF500346240 /* ToDoEntityExtension.swift in Sources */,
 				E7E1FFF525A2D04D00E6880A /* CategoryImage.swift in Sources */,
 				E7E1FFFA25A2EAB700E6880A /* ColorExtension.swift in Sources */,
-				E79C7D0825A7754500E55AE5 /* cornerRadius.swift in Sources */,
+				E79C7D0825A7754500E55AE5 /* CornerRadius.swift in Sources */,
 				E7E1FFC425A2CFB100E6880A /* SceneDelegate.swift in Sources */,
 				E72D250D25A6AC190035F481 /* BindingExtention.swift in Sources */,
 			);
