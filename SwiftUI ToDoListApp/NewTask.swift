@@ -12,11 +12,14 @@ struct NewTask: View {
 
     //MARK: - Properties
     @State var newTask = ""
+    @State var dateTime = Date()
     
     var body: some View {
         NavigationView {
             VStack {
                 TextField("ToDo(やる事)追加", text: $newTask)
+                // selectionには渡すBinding
+                DatePicker(selection: $dateTime, label: { Text("日時") })
             }.navigationBarTitle("ToDo追加")
         }
     }
