@@ -8,15 +8,15 @@
 
 import SwiftUI
 
-struct NewTask: View {
-
+struct EditToDo: View {
+    
     //MARK: - Properties
-    @State var newTask = "" // ToDo内容を保持
-    @State var selectDateTime: Date? = Date()  //日時 nilを持ちたい（optional型）にしたいのでDate?としてます
-    @State var newTsskCategory = ToDoEntity.Category.Priority1st.rawValue // カテゴリーピッカーの内容を保持
+    @ObservedObject var editToDo: ToDoEntity
+    @State var showingActionSheet = false
+    
     var categoryArray: [ToDoEntity.Category]
         = [.Priority1st, .Priority2nd, .Priority3rd, .Priority4th]
-
+    
     @Environment(\.managedObjectContext) var viewContext
     @Environment(\.presentationMode) var presentationMode // viewの表示制御オブジェクトを取得
     
@@ -31,14 +31,21 @@ struct NewTask: View {
             fatalError("エラー\(error), \(error.userInfo)")
         }
     }
-
+    
+    private func delete() {
+        viewContext.delete(editToDo)
+        save()
+    }
+    
+    
+    
     
     var body: some View {
         NavigationView {
             Form {
                 // ToDo入力セクション
                 Section(header: Text("ToDo")) {
-                    TextField("ToDo(やる事)追加", text: $newTask)
+                    TextField("ToDo(やる事)追加", text: Binding($editToDo.task, "New ToDo"))
                 }
                 
                 /*
@@ -46,14 +53,14 @@ struct NewTask: View {
                  Binding(isNotNil: $selectDateTime, defaultValue: Date())
                  selectDateTimeの値がnilかそうでないかをToggleと連動させる（ToggleがONで!=nil OFFでnilが$selectDateTimeに入る）
                  */
-                Section(header: Toggle(isOn: Binding(isNotNil: $selectDateTime, defaultValue: Date()), label: { Text("日時") } )) {
-                    if selectDateTime != nil { // selectDateTimeがnilでなかったら時間設定表示 nilなら表示しない
+                Section(header: Toggle(isOn: Binding(isNotNil: $editToDo.time, defaultValue: Date()), label: { Text("日時") } )) {
+                    if editToDo.time != nil { // selectDateTimeがnilでなかったら時間設定表示 nilなら表示しない
                         /*
                          selectionには渡すBindingを設定
                          $selectDateTimeだとoptionalのBindingを渡してしまうのでエラーになる（Date型のBindingを渡さなければならない）
                          Binding($selectDateTime, Date())としてoptionalをBindingする
                          */
-                        DatePicker(selection: Binding($selectDateTime, Date()), label: { Text("日時") })
+                        DatePicker(selection: Binding($editToDo.time, Date()), label: { Text("日時") })
                     } else {
                         Text("未設定").foregroundColor(.secondary)
                     }
@@ -61,7 +68,7 @@ struct NewTask: View {
                 }
                 
                 // カテゴリーピッカー $categoryにtagの値が入る
-                Picker(selection: $newTsskCategory, label: Text("カテゴリー")) {
+                Picker(selection: $editToDo.category, label: Text("カテゴリー")) {
                     ForEach(categoryArray, id: \.self) { category in
                         HStack {
                             CategoryImage(category)
@@ -70,38 +77,47 @@ struct NewTask: View {
                     }
                 }
                 
-                //キャンセルセクション
-                Section(header: Text("取り消し")) {
+                //削除セクション
+                Section(header: Text("削除")) {
                     Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
+                        self.showingActionSheet = true
                     }) {
                         HStack(alignment: .center) {
                             Image(systemName: "minus.circle.fill")
-                            Text("キャンセル")
+                            Text("削除")
                         }.foregroundColor(.red)
                     }
                 }
-            }.navigationBarTitle("ToDo追加")
+            }.navigationBarTitle("ToDoの編集")
                 .navigationBarItems(trailing: Button(action: {
-                    ToDoEntity.create(in: self.viewContext, category: ToDoEntity.Category(rawValue: self.newTsskCategory) ?? .Priority1st, task: self.newTask, time: self.selectDateTime)
                     self.save()
                     self.presentationMode.wrappedValue.dismiss()
-
+                    
                 }) {
-                    Text("保存")
+                    Text("閉じる")
                 })
-        }
+                .actionSheet(isPresented: $showingActionSheet) { //showingActionSheetがtrueの時表示
+                    ActionSheet(title: Text("ToDoの削除"), message: Text("この項目を削除します。よろしいですか？"), buttons: [
+                        .destructive(Text("削除")) { // .destructive ボタンのデザイン
+                        self.delete()
+                        self.presentationMode.wrappedValue.dismiss()
+                        },                                                                                                                                                    .cancel(Text("キャンセル")) // cancel ボタンのデザイン
+
+                    ])
+            }
+            
     }
 }
 
-struct NewTask_Previews: PreviewProvider {
+struct EditToDo_Previews: PreviewProvider {
     static var context = (UIApplication.shared.delegate as! AppDelegate)
         .persistentContainer.viewContext // DB操作対応
     static var previews: some View {
-        NewTask()
+        let edit = ToDoEntity(context: context)
+        return EditToDo(editToDo: edit)
             .environment(\.managedObjectContext, context)
             .environment(\.locale, Locale(identifier: "ja_JP"))
         
-
     }
+}
 }

@@ -32,7 +32,7 @@ struct UserView: View {
                 .clipShape(Circle())
         }
         .padding() //HStackに余白を入れる
-        .background(Color.selfBackground) //背景色に自作した色指定
+            .background(Color.gray) //背景色に自作した色指定
     }
 }
 

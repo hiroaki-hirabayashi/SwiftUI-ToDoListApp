@@ -12,36 +12,45 @@ import SwiftUI
 struct CategoryView: View {
     
     //MARK: - Properties
-    var category: ToDoEntity.Category // extensionで作成したToDoEntity内のCategory
+    var categoryViewCategory: ToDoEntity.Category // extensionで作成したToDoEntity内のCategory
     @State var numberOfTasks = 0 //カテゴリー内のタスク数表示
     @State var showList = false
     @Environment(\.managedObjectContext) var viewContext
+    @State var addNewTaskView = false
     
     var body: some View {
         VStack {
             VStack (alignment:.leading){ //左揃え
                 // extensionで作成したToDoEntity内のCategoryのimage
-                Image(systemName: category.iconImage())
+                Image(systemName: categoryViewCategory.iconImage())
                     .font(.largeTitle) // アイコンの大きさ
                     .sheet(isPresented: $showList) {
                         /* isPresentedがtrueの時、シート表示 $showListはonTapGestureで制御
                          sheetModifire でシートの中身（content）を指定する
                          */
-                        ToDoList(toDoCategory: self.category)
+                        ToDoList(toDoCategory: self.categoryViewCategory)
                             .environment(\.managedObjectContext, self.viewContext) // これを記入しないとDBが動作しない。ToDoList_Previewsに詳細有り
                 }
-                Text(category.iconString())
+                Text(categoryViewCategory.iconString())
                 Text("・\(numberOfTasks)タスク")
             }
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+            Button(action: {
+                self.addNewTaskView = true // ボタンタップでtrueに
+            }) {
                 Image(systemName: "plus")
+                    .foregroundColor(.black)
+            }.sheet(isPresented: $addNewTaskView) { // trueでNewTaskをポップアップ
+                NewTask(newTsskCategory: self.categoryViewCategory.rawValue)
+                    .environment(\.managedObjectContext, self.viewContext)
+                    .environment( \.locale, Locale(identifier: "ja_JP")) // Pickerを日本語化
             }
+            
             Spacer()
         }
             .padding() // 余白
             .frame(maxWidth: .infinity, minHeight: 150) // 横幅最大, 高さの最小固定
             .foregroundColor(.white) // 前景色
-            .background(category.iconColor()) // 背景色
+            .background(categoryViewCategory.iconColor()) // 背景色
             .cornerRadius(20) // 角丸に
             .onTapGesture {
                 self.showList = true
@@ -55,10 +64,10 @@ struct CategoryView_Previews: PreviewProvider {
     
     static var previews: some View {
         VStack {
-            CategoryView(category: .Priority1st)
-            CategoryView(category: .Priority2nd)
-            CategoryView(category: .Priority3rd)
-            CategoryView(category: .Priority4th)
+            CategoryView(categoryViewCategory: .Priority1st)
+            CategoryView(categoryViewCategory: .Priority2nd)
+            CategoryView(categoryViewCategory: .Priority3rd)
+            CategoryView(categoryViewCategory: .Priority4th)
         }.environment(\.managedObjectContext, context)
     }
 }

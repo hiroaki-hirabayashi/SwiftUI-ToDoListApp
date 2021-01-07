@@ -13,32 +13,35 @@ struct ContentView: View {
 
         VStack(spacing: 0) {
             //.edgesIgnoringSafeArea(.all)にするとアイコンとLabelがSafeAreaを超える為、
-
-            Color.selfBackground
+            Color.gray
                 .edgesIgnoringSafeArea(.top)
                 .frame(height: 0)
 
-            UserView(image: Image("Catalina"), userName: "平林 宏淳")
+            UserView(image: Image("Catalina"), userName: "User Name")
             
             VStack(spacing: 0) { //viewの間隔
                 HStack(spacing: 0) {
-                    CategoryView(category: .Priority1st)
+                    CategoryView(categoryViewCategory: .Priority1st)
                     Spacer() //中心の余白
-                    CategoryView(category: .Priority2nd)
+                    CategoryView(categoryViewCategory: .Priority2nd)
                 }
                 HStack(spacing: 0) {
-                    CategoryView(category: .Priority3rd)
+                    CategoryView(categoryViewCategory: .Priority3rd)
                     Spacer() //中心の余白
-                    CategoryView(category: .Priority4th)
+                    CategoryView(categoryViewCategory: .Priority4th)
                 }
             }.padding() // 余白
-        }.background(Color.selfBackground) // 背景色
+        }.background(Color.gray) // 背景色
             .edgesIgnoringSafeArea(.bottom) // SafeAreaを超える
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
+    static var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     static var previews: some View {
         ContentView()
+            .environment(\.managedObjectContext, context)
+
+        
     }
 }
