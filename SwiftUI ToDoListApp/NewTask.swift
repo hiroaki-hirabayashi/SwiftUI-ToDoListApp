@@ -9,10 +9,14 @@
 import SwiftUI
 
 struct NewTask: View {
+
+    //MARK: - Properties
+    @State var newTask = ""
+    
     var body: some View {
         NavigationView {
             VStack {
-                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                TextField("ToDo(やる事)追加", text: $newTask)
             }.navigationBarTitle("ToDo追加")
         }
     }
