@@ -17,14 +17,22 @@ struct NewTask: View {
     var body: some View {
         NavigationView {
             Form {
-                TextField("ToDo(やる事)追加", text: $newTask)
-                // selectionには渡すBinding
-                DatePicker(selection: $selectDateTime, label: { Text("日時") })
-                Button(action: {}) {
-                    HStack(alignment: .center) {
-                        Image(systemName: "minus.circle.fill")
-                        Text("キャンセル")
-                    }.foregroundColor(.red)
+                Section(header: Text("ToDo")) {
+                    TextField("ToDo(やる事)追加", text: $newTask)
+                }
+                
+                Section(header: Toggle(isOn: .constant(true), label: { Text("日時") } )) {
+                    // selectionには渡すBinding
+                    DatePicker(selection: $selectDateTime, label: { Text("日時") })
+                }
+                
+                Section(header: Text("取り消し")) {
+                    Button(action: {}) {
+                        HStack(alignment: .center) {
+                            Image(systemName: "minus.circle.fill")
+                            Text("キャンセル")
+                        }.foregroundColor(.red)
+                    }
                 }
             }.navigationBarTitle("ToDo追加")
         }
