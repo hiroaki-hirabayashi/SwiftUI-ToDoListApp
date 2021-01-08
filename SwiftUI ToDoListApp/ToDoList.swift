@@ -53,7 +53,9 @@ struct ToDoList: View {
                 }
                 QuickNewTask(category: toDoCategory)
                     .padding()
-            }
+            }.navigationBarTitle(toDoCategory.iconString())
+
+            .navigationBarItems(trailing: EditButton()) // 編集ボタン追加
         }
     }
 }
