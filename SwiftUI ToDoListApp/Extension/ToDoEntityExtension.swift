@@ -81,10 +81,22 @@ extension ToDoEntity: Identifiable {
         case toDo
         case done
     }
-}
 
-struct ToDoEntityExtension_Previews: PreviewProvider {
-    static var previews: some View {
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+    
+    //
+    static func toDoNumberCount(in managedObjectContext: NSManagedObjectContext,
+                                category: Category) -> Int {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ToDoEntity")
+        // 検索 categoryに一致するものを取得して
+        fetchRequest.predicate = NSPredicate(format: "category == \(category.rawValue)")
+        
+         //DB管理オブジェクト（managedObjectContext）のcountメソッドで検索条件に当てはまるデータの件数を取得する
+        do {
+            let count = try managedObjectContext.count(for: fetchRequest)
+            return count
+        } catch  {
+            print("Error: \(error.localizedDescription)")
+            return 0
+        }
     }
 }

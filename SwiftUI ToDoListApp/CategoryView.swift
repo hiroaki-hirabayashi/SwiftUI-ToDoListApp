@@ -13,10 +13,14 @@ struct CategoryView: View {
     
     //MARK: - Properties
     var categoryViewCategory: ToDoEntity.Category // extensionで作成したToDoEntity内のCategory
-    @State var numberOfTasks = 0 //カテゴリー内のタスク数表示
+    @State var numberOfTasks = 0 //カテゴリー内のToDo数表示
     @State var showList = false
     @Environment(\.managedObjectContext) var viewContext
     @State var addNewTaskView = false
+    
+    fileprivate func toDoNumberCountUpdate() { // カテゴリー内のToDo数を更新する
+        self.numberOfTasks = ToDoEntity.toDoNumberCount(in: self.viewContext, category: self.categoryViewCategory)
+    }
     
     var body: some View {
         VStack {
@@ -24,7 +28,7 @@ struct CategoryView: View {
                 // extensionで作成したToDoEntity内のCategoryのimage
                 Image(systemName: categoryViewCategory.iconImage())
                     .font(.largeTitle) // アイコンの大きさ
-                    .sheet(isPresented: $showList) {
+                    .sheet(isPresented: $showList, onDismiss: {self.toDoNumberCountUpdate()}) {
                         /* isPresentedがtrueの時、シート表示 $showListはonTapGestureで制御
                          sheetModifire でシートの中身（content）を指定する
                          */
@@ -39,7 +43,7 @@ struct CategoryView: View {
             }) {
                 Image(systemName: "plus")
                     .foregroundColor(.black)
-            }.sheet(isPresented: $addNewTaskView) { // trueでNewTaskをポップアップ
+            }.sheet(isPresented: $addNewTaskView, onDismiss: {self.toDoNumberCountUpdate()}) { // trueでNewTaskをポップアップ
                 NewTask(newTsskCategory: self.categoryViewCategory.rawValue)
                     .environment(\.managedObjectContext, self.viewContext)
                     .environment( \.locale, Locale(identifier: "ja_JP")) // Pickerを日本語化
@@ -54,6 +58,8 @@ struct CategoryView: View {
             .cornerRadius(20) // 角丸に
             .onTapGesture {
                 self.showList = true
+        }.onAppear() { // view（VStack）が開かれた時に実行される
+            self.toDoNumberCountUpdate()
         }
     }
 }
