@@ -22,6 +22,9 @@ struct ToDoList: View {
     var toDoListEntity: FetchedResults<ToDoEntity> // DBテーブルの全データが入る
     var toDoCategory: ToDoEntity.Category
     @Environment(\.managedObjectContext) var viewContext // DB操作オブジェクト
+   
+    // @Published var keyboardHeightに変更があれば反映する
+    @ObservedObject var keyboardObserver = KeyboardObserver()
 
     // IndexSet どのデータを削除するかが入る forで回して対象のentityを取得して削除を繰り返す
     private func swipeDeleteToDo(at offsets: IndexSet) {
@@ -56,7 +59,14 @@ struct ToDoList: View {
             }.navigationBarTitle(toDoCategory.iconString())
 
             .navigationBarItems(trailing: EditButton()) // 編集ボタン追加
-        }
+        }.onAppear() { // viewが表示される時
+            self.keyboardObserver.startObserve()
+            UIApplication.shared.closeKeyboard()
+        }.onDisappear() { // viewが閉じる時
+            self.keyboardObserver.stopObserve()
+            UIApplication.shared.closeKeyboard()
+        }.padding(.bottom, keyboardObserver.keyboardHeight)
+        // キーボード高さに合わせてpaddingを取る（全体が上に上がる）
     }
 }
 
