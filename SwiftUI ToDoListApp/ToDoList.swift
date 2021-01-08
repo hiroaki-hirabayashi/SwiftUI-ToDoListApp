@@ -61,7 +61,7 @@ struct ToDoList: View {
             .navigationBarItems(trailing: EditButton()) // 編集ボタン追加
         }.onAppear() { // viewが表示される時
             self.keyboardObserver.startObserve()
-            UIApplication.shared.closeKeyboard()
+            UIApplication.shared.closeKeyboard() //キーボードをしまう
         }.onDisappear() { // viewが閉じる時
             self.keyboardObserver.stopObserve()
             UIApplication.shared.closeKeyboard()

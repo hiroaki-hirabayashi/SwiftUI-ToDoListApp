@@ -18,12 +18,17 @@ struct CategoryView: View {
     @Environment(\.managedObjectContext) var viewContext
     @State var addNewTaskView = false
     
-    fileprivate func toDoNumberCountUpdate() { // カテゴリー内のToDo数を更新する
+    fileprivate func toDoNumberCountUpdate() {
+        // カテゴリー内のToDo数を更新する
         self.numberOfTasks = ToDoEntity.toDoNumberCount(in: self.viewContext, category: self.categoryViewCategory)
     }
     
     var body: some View {
-        VStack {
+        
+        let gradient = Gradient(colors: [categoryViewCategory.iconColor(), categoryViewCategory.iconColor().opacity(0.5)])
+        let linerGradient = LinearGradient(gradient: gradient, startPoint: .top, endPoint: .bottom)
+        
+        return VStack {
             VStack (alignment:.leading){ //左揃え
                 // extensionで作成したToDoEntity内のCategoryのimage
                 Image(systemName: categoryViewCategory.iconImage())
@@ -46,7 +51,8 @@ struct CategoryView: View {
             }.sheet(isPresented: $addNewTaskView, onDismiss: {self.toDoNumberCountUpdate()}) { // trueでNewTaskをポップアップ
                 NewTask(newTsskCategory: self.categoryViewCategory.rawValue)
                     .environment(\.managedObjectContext, self.viewContext)
-                    .environment( \.locale, Locale(identifier: "ja_JP")) // Pickerを日本語化
+                    .environment( \.locale, Locale(identifier: "ja_JP"))
+                // Pickerを日本語化（Previews内のみ）
             }
             
             Spacer()
@@ -54,7 +60,8 @@ struct CategoryView: View {
             .padding() // 余白
             .frame(maxWidth: .infinity, minHeight: 150) // 横幅最大, 高さの最小固定
             .foregroundColor(.white) // 前景色
-            .background(categoryViewCategory.iconColor()) // 背景色
+//            .background(categoryViewCategory.iconColor()) // 背景色
+            .background(linerGradient)
             .cornerRadius(20) // 角丸に
             .onTapGesture {
                 self.showList = true
