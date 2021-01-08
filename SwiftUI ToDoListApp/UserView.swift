@@ -18,8 +18,8 @@ struct UserView: View {
     var body: some View {
         HStack {
             VStack (alignment: .leading) { //左寄せ
-                Text("こんにちわ")
-                    .foregroundColor(Color.selfTitle) //文字色に自作した色指定
+                Text("ToDoListApp")
+                    .foregroundColor(Color.selfBackground) //文字色に自作した色指定
                     .font(.footnote)
                 Text("\(userName)")
                     .foregroundColor(Color.selfTitle) //文字色に自作した色指定
