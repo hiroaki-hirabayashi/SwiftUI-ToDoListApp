@@ -8,11 +8,12 @@
 
 import SwiftUI
 
+// ToDo編集画面
 struct EditToDo: View {
     
     //MARK: - Properties
-    @ObservedObject var editToDo: ToDoEntity
-    @State var showingActionSheet = false
+    @ObservedObject var editToDo: ToDoEntity // DBの監視 SwiftUI上でこの値を変更したらDBに反映される
+    @State var showingActionSheet = false // actionsheetの表示を制御する
     
     var categoryArray: [ToDoEntity.Category]
         = [.Priority1st, .Priority2nd, .Priority3rd, .Priority4th]
@@ -22,7 +23,7 @@ struct EditToDo: View {
     
     //MARK: - function
     
-    //データ保存のfunction
+    //データ保存のfunction 永続化
     private func save() {
         do {
             try self.viewContext.save()
@@ -32,6 +33,7 @@ struct EditToDo: View {
         }
     }
     
+    // viewContext DB操作オブジェクトに対してdeleteメソッド
     private func delete() {
         viewContext.delete(editToDo)
         save()
@@ -78,7 +80,7 @@ struct EditToDo: View {
                 }
                 
                 //削除セクション
-                Section(header: Text("削除")) {
+                Section(header: Text("ToDo削除")) {
                     Button(action: {
                         self.showingActionSheet = true
                     }) {
@@ -98,10 +100,10 @@ struct EditToDo: View {
                 })
                 .actionSheet(isPresented: $showingActionSheet) { //showingActionSheetがtrueの時表示
                     ActionSheet(title: Text("ToDoの削除"), message: Text("この項目を削除します。よろしいですか？"), buttons: [
-                        .destructive(Text("削除")) { // .destructive ボタンのデザイン
+                        .destructive(Text("削除する")) { // .destructive ボタンのデザイン
                         self.delete()
                         self.presentationMode.wrappedValue.dismiss()
-                        },                                                                                                                                                    .cancel(Text("キャンセル")) // cancel ボタンのデザイン
+                        },.cancel(Text("キャンセル")) // cancel ボタンのデザイン
 
                     ])
             }

@@ -18,7 +18,8 @@ struct NewTask: View {
         = [.Priority1st, .Priority2nd, .Priority3rd, .Priority4th]
 
     @Environment(\.managedObjectContext) var viewContext
-    @Environment(\.presentationMode) var presentationMode // viewの表示制御オブジェクトを取得
+    @Environment(\.presentationMode) var presentationMode // viewの表示制御オブジェクトを取得(dismiss)
+    
     
     //MARK: - function
     

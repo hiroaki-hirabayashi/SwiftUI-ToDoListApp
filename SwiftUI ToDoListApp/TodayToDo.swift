@@ -10,23 +10,25 @@ import SwiftUI
 
 // メイン画面に表示させる一覧リスト
 struct TodayToDo: View {
-    @FetchRequest(
+    @FetchRequest(  // DBテーブルからデータを取得するアノテーション
+        // 取得したデータの並べ替えの条件 この場合はToDoEntityの日時
         sortDescriptors: [NSSortDescriptor(keyPath: \ToDoEntity.time,
                                            ascending: true)],
+        // 今日の0時から明日の0時までの1日分のデータ
         predicate: NSPredicate(format:"time BETWEEN {%@ , %@}", Date.todayDate as NSDate, Date.tomorrowDate as NSDate),
         animation: .default)
     
-    var toDoList: FetchedResults<ToDoEntity>
+    var todayToDo: FetchedResults<ToDoEntity>
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("本日のToDo")
                 .font(.footnote).bold().padding()
-            List(toDoList) { toDo in
+            List(todayToDo) { toDo in
                 ToDoDetailRow(observedToDo: toDo)
             }
         }.background(Color(UIColor.systemBackground))
-        .clipShape(CornerRadius(topRight: 40, topLelt: 40, bottomRight: 0, bottomLeft: 0))
+        .clipShape(CornerRadius(topRight: 40, topLelt: 40, bottomRight: 0, bottomLeft: 0)) // viewをclipShapeで切り抜く
         
     }
 }

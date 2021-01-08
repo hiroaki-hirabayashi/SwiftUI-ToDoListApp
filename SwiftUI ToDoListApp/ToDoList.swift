@@ -19,21 +19,37 @@ struct ToDoList: View {
                                            ascending: true)],
         animation: .default)
     
-    var toDoList: FetchedResults<ToDoEntity> // DBテーブルの全データが入る
+    var toDoListEntity: FetchedResults<ToDoEntity> // DBテーブルの全データが入る
     var toDoCategory: ToDoEntity.Category
+    @Environment(\.managedObjectContext) var viewContext // DB操作オブジェクト
+
+    // IndexSet どのデータを削除するかが入る forで回して対象のentityを取得して削除を繰り返す
+    private func swipeDeleteToDo(at offsets: IndexSet) {
+        for index in offsets {
+            let entity = toDoListEntity[index]
+            viewContext.delete(entity)
+        }
+        do {
+            try viewContext.save() // 削除した事をセーブする
+        } catch {
+            print("削除エラー\(offsets)")
+        }
+    }
 
     var body: some View {
         NavigationView {
             VStack {
                 List {
-                    ForEach(toDoList) { toDoList in
+                    ForEach(toDoListEntity) { toDoList in
                         // ToDoEntityのcategory
                         if toDoList.category == self.toDoCategory.rawValue {
+                            // 画面遷移で開きたいviewを指定
                             NavigationLink(destination: EditToDo(editToDo: toDoList)) {
+                                // ToDoDetileRowが表示されセルをタップするとEditToDoの遷移する
                                 ToDoDetailRow(observedToDo: toDoList, hideIcon: true)
-                            } // ToDoDetileRowを組込む
+                            }
                         }
-                    }
+                    }.onDelete(perform: swipeDeleteToDo(at:))
                 }
                 QuickNewTask(category: toDoCategory)
                     .padding()
@@ -77,6 +93,8 @@ struct ToDoList_Previews: PreviewProvider {
         // 複数行ある場合はreturnを定義しなければならない？
         return ToDoList(toDoCategory: .Priority1st)
             .environment(\.managedObjectContext, context)
+            
+
         
     }
 
