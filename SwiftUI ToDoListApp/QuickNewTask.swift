@@ -13,6 +13,9 @@ struct QuickNewTask: View {
 
     //MARK: - Properties
     let category: ToDoEntity.Category
+
+    var isEnabled = false
+
     @State var newTask = "" // 入力されたタスクを保持
     @Environment(\.managedObjectContext) var ViewContext // DB操作のためのContext
     
