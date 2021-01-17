@@ -76,11 +76,19 @@ struct CategoryView_Previews: PreviewProvider {
         .persistentContainer.viewContext
     
     static var previews: some View {
-        VStack {
+        Group {
             CategoryView(categoryViewCategory: .Priority1st)
             CategoryView(categoryViewCategory: .Priority2nd)
             CategoryView(categoryViewCategory: .Priority3rd)
             CategoryView(categoryViewCategory: .Priority4th)
-        }.environment(\.managedObjectContext, context)
+        }
+        .previewLayout(.fixed(width: 200.0, height: 200.0))
+        .environment(\.managedObjectContext, context)
     }
+    
+    /*
+     そのままプレビュー表示だとiPhoneサイズのレイアウトにCategoryViewが詰めこられたものになり実際に使うときの表示の参考にならない。
+     Groupに格納、previewLayoutでレイアウトサイズを指定すると、実際の表示に近いプレビューになる
+     */
+    
 }
