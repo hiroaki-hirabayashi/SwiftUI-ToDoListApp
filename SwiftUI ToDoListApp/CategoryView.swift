@@ -91,4 +91,7 @@ struct CategoryView_Previews: PreviewProvider {
      Groupに格納、previewLayoutでレイアウトサイズを指定すると、実際の表示に近いプレビューになる
      */
     
+    
+    
+    
 }
