@@ -90,8 +90,4 @@ struct CategoryView_Previews: PreviewProvider {
      そのままプレビュー表示だとiPhoneサイズのレイアウトにCategoryViewが詰めこられたものになり実際に使うときの表示の参考にならない。
      Groupに格納、previewLayoutでレイアウトサイズを指定すると、実際の表示に近いプレビューになる
      */
-    
-    
-    
-    
 }
