@@ -57,7 +57,7 @@ struct QuickNewTask_Previews: PreviewProvider {
         .persistentContainer.viewContext
     
     static var previews: some View {
-        QuickNewTask(category: .Priority1st)
+        QuickNewTask(category: .priority1st)
             .environment(\.managedObjectContext, context) // DB操作オブジェクト
     }
 }

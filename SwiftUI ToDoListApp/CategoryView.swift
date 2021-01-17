@@ -77,10 +77,10 @@ struct CategoryView_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            CategoryView(categoryViewCategory: .Priority1st)
-            CategoryView(categoryViewCategory: .Priority2nd)
-            CategoryView(categoryViewCategory: .Priority3rd)
-            CategoryView(categoryViewCategory: .Priority4th)
+            CategoryView(categoryViewCategory: .priority1st)
+            CategoryView(categoryViewCategory: .priority2nd)
+            CategoryView(categoryViewCategory: .priority3rd)
+            CategoryView(categoryViewCategory: .priority4th)
         }
         .previewLayout(.fixed(width: 200.0, height: 200.0))
         .environment(\.managedObjectContext, context)

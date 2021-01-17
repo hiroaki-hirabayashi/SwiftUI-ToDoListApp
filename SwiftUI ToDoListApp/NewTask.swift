@@ -13,9 +13,9 @@ struct NewTask: View {
     //MARK: - Properties
     @State var newTask = "" // ToDo内容を保持
     @State var selectDateTime: Date? = Date()  //日時 nilを持ちたい（optional型）にしたいのでDate?としてます
-    @State var newTsskCategory = ToDoEntity.Category.Priority1st.rawValue // カテゴリーピッカーの内容を保持
+    @State var newTsskCategory = ToDoEntity.Category.priority1st.rawValue // カテゴリーピッカーの内容を保持
     var categoryArray: [ToDoEntity.Category]
-        = [.Priority1st, .Priority2nd, .Priority3rd, .Priority4th]
+        = [.priority1st, .priority2nd, .priority3rd, .priority4th]
 
     @Environment(\.managedObjectContext) var viewContext
     @Environment(\.presentationMode) var presentationMode // viewの表示制御オブジェクトを取得(dismiss)
@@ -84,7 +84,7 @@ struct NewTask: View {
                 }
             }.navigationBarTitle("ToDo追加")
                 .navigationBarItems(trailing: Button(action: {
-                    ToDoEntity.create(in: self.viewContext, category: ToDoEntity.Category(rawValue: self.newTsskCategory) ?? .Priority1st, task: self.newTask, time: self.selectDateTime)
+                    ToDoEntity.create(in: self.viewContext, category: ToDoEntity.Category(rawValue: self.newTsskCategory) ?? .priority1st, task: self.newTask, time: self.selectDateTime)
                     self.save()
                     self.presentationMode.wrappedValue.dismiss()
 

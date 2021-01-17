@@ -34,44 +34,44 @@ extension ToDoEntity: Identifiable {
 
     
     enum Category: Int16 {
-        case Priority1st     // Important & Urgent (第1領域）
-        case Priority2nd    // Important & Not Urgent (第2領域）
-        case Priority3rd    // Not Important & Urgent（第3領域）
-        case Priority4th   // Not Important & Not Urgent（第4領域）
+        case priority1st     // Important & Urgent (第1領域）
+        case priority2nd    // Important & Not Urgent (第2領域）
+        case priority3rd    // Not Important & Urgent（第3領域）
+        case priority4th   // Not Important & Not Urgent（第4領域）
         
         func iconString() -> String { // タイトル文字
             switch self {
-                case .Priority1st:
+                case .priority1st:
                     return "優先度1（重要かつ緊急）"
-                case .Priority2nd:
+                case .priority2nd:
                     return "優先度2（重要だが緊急ではない）"
-                case .Priority3rd:
+                case .priority3rd:
                     return "優先度3（重要でないが緊急）"
-                case .Priority4th:
+                case .priority4th:
                     return "優先度4（重要でも緊急でもない）"
             }
         }
         func iconImage() -> String { // 画像
             switch self {
-                case .Priority1st:
+                case .priority1st:
                     return "flame"
-                case .Priority2nd:
+                case .priority2nd:
                     return "tortoise.fill"
-                case .Priority3rd:
+                case .priority3rd:
                     return "alarm"
-                case .Priority4th:
+                case .priority4th:
                     return "tv.music.note"
             }
         }
         func iconColor() -> Color { // 色
             switch self {
-                case .Priority1st:
+                case .priority1st:
                     return .selfRed
-                case .Priority2nd:
+                case .priority2nd:
                     return .selfBlue
-                case .Priority3rd:
+                case .priority3rd:
                     return .selfGreen
-                case .Priority4th:
+                case .priority4th:
                     return .selfYellow
             }
         }

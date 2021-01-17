@@ -117,7 +117,7 @@ struct TabBar_Previews: PreviewProvider {
         .persistentContainer.viewContext
 
     static var previews: some View {
-        TabBar(tabBarCategory: .Priority1st)
+        TabBar(tabBarCategory: .priority1st)
             .environment(\.managedObjectContext, context)
     }
 }

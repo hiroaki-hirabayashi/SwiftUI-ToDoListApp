@@ -21,14 +21,14 @@ struct ContentView: View {
             
             VStack(spacing: 0) { //viewの間隔
                 HStack(spacing: 0) {
-                    CategoryView(categoryViewCategory: .Priority1st)
+                    CategoryView(categoryViewCategory: .priority1st)
                     Spacer() //中心の余白
-                    CategoryView(categoryViewCategory: .Priority2nd)
+                    CategoryView(categoryViewCategory: .priority2nd)
                 }
                 HStack(spacing: 0) {
-                    CategoryView(categoryViewCategory: .Priority3rd)
+                    CategoryView(categoryViewCategory: .priority3rd)
                     Spacer() //中心の余白
-                    CategoryView(categoryViewCategory: .Priority4th)
+                    CategoryView(categoryViewCategory: .priority4th)
                 }
             }.padding() // 余白
             

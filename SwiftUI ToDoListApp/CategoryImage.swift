@@ -14,7 +14,7 @@ struct CategoryImage: View {
     var categoryImage: ToDoEntity.Category
     
     init(_ category: ToDoEntity.Category?) {
-        self.categoryImage = category ?? .Priority1st
+        self.categoryImage = category ?? .priority1st
     }
     
     var body: some View {
@@ -37,6 +37,6 @@ struct CategoryImage: View {
 
 struct CategoryImage_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryImage(ToDoEntity.Category.Priority1st)
+        CategoryImage(ToDoEntity.Category.priority1st)
     }
 }

@@ -16,7 +16,7 @@ struct EditToDo: View {
     @State var showingActionSheet = false // actionsheetの表示を制御する
     
     var categoryArray: [ToDoEntity.Category]
-        = [.Priority1st, .Priority2nd, .Priority3rd, .Priority4th]
+        = [.priority1st, .priority2nd, .priority3rd, .priority4th]
     
     @Environment(\.managedObjectContext) var viewContext
     @Environment(\.presentationMode) var presentationMode // viewの表示制御オブジェクトを取得
