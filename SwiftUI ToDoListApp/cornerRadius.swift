@@ -22,9 +22,9 @@ struct CornerRadius: Shape {
         let width = rect.size.width
         let height = rect.size.height
         let topRight = min(min(self.topRight, height / 2), width / 2)
-        let topRelt = min(min(self.topLelt, height / 2), width / 2)
+        let topLelt = min(min(self.topLelt, height / 2), width / 2)
         let bottomRight = min(min(self.bottomRight, height / 2), width / 2)
-        let bottomReft = min(min(self.bottomLeft, height / 2), width / 2)
+        let bottomLeft = min(min(self.bottomLeft, height / 2), width / 2)
         
         // move 書き出しの位置 addLine 線を引く addArc 弧を描く
         // 画面上の中央、右上から右下までの線
@@ -39,7 +39,7 @@ struct CornerRadius: Shape {
         // 左下から左上に向かって弧を描く
         path.addArc(center: CGPoint(x: bottomLeft, y: height - bottomLeft), radius: bottomLeft, startAngle: Angle(degrees: 90), endAngle:  Angle(degrees: 180), clockwise: false)
         // 左上までの線
-        path.addLine(to: CGPoint(x: 0, y: topRelt))
+        path.addLine(to: CGPoint(x: 0, y: topLelt))
         // 左上から画面上の中央に向かって弧を描く
         path.addArc(center: CGPoint(x: topLelt, y: topLelt), radius: topLelt, startAngle: Angle(degrees: 180), endAngle:  Angle(degrees: 270), clockwise: false)
         // pathを閉じる
