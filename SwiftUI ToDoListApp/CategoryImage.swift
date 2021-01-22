@@ -28,10 +28,6 @@ struct CategoryImage: View {
 //            .background(Color(.systemBlue)) //背景色
             .background(categoryImage.iconColor()) //背景色
             .cornerRadius(6.0) //アイコンの角を丸く
-        
-        
-        
-        
     }
 }
 
