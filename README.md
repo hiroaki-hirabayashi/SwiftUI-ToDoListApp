@@ -1,8 +1,9 @@
-# SwiftUI-ToDoListApp
-- ToDo内容、優先度を登録出来る
-- カテゴリー別に一覧表示する
+## SwiftUI-ToDoListApp
+- SwiftUIでTODO、優先度を登録出来るサンプルアプリ
+- カテゴリー別に一覧表示する機能
 
-DB: CoreDate
+- Xcode12.4
+- CoreData
 
 ![スクリーンショット 2021-02-24 14 43 32](https://user-images.githubusercontent.com/55319251/108953542-b8b21e00-76ae-11eb-96e0-072633f2dde6.png)
 
