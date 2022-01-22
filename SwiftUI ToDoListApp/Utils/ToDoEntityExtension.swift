@@ -9,7 +9,7 @@
 import CoreData
 import SwiftUI
 
-extension ToDoEntity: Identifiable {
+extension ToDoEntity {
     
     // CoreDateの処理 テストデータ                 //CoreDateのDB操作の為のインスタンス
     static func create(in managedObjectContext: NSManagedObjectContext,
